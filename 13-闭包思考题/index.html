@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //有没有发生闭包
+        var name = "The Window";
+        var obj = {
+            name: "My Object",
+            getNameFunc: function() {
+                return function() {
+                    return this.name;
+                }
+            }
+        }
+        console.log(obj.getNameFunc()()); //没有
+        //obj.getNameFunc()返回的是一个匿名函数,obj.getNameFunc()()相当于立即执行函数,里的this指向的是window没有用到任何函数内部的局部变量
+        //输出The Window
+        var name = "The Window";
+        var obj = {
+            name: "My Object",
+            getNameFunc: function() { //闭包函数
+                var that = this; //this指向obj
+                return function() {
+                    return that.name;
+                }
+            }
+        }
+        console.log(obj.getNameFunc()()); //My Object,立即执行函数
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

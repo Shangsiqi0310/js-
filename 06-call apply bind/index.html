@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //call调用当前函数的同时,改变函数的this指向,参数不是数组
+        //用来实现继承
+        var o = {
+            name: "o",
+            age: 12
+        }
+
+        function don() {
+            console.log(this);
+
+        }
+        don.call(o);
+        //apply 调用当前函数,改变函数内的this指向,参数传入数组,可以拿到每个值
+        Math.max.apply(Math, [11, 33, 21, 16]); //传过去的实际参数是去掉数组后的,比较数字中的最大值
+        //bind 不直接调用,可以改变函数的this指向,参数不是数组,返回值原函数的拷贝
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

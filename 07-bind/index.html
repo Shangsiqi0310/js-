@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.addEventListener("load", function() { //记得要先页面加载
+            var but = document.querySelector("button"); //绑定点击事件
+            but.addEventListener("click", function() {
+                this.disabled = true; //disabled=true;
+                setTimeout(function() { //设置定时器点击后的2秒自动变成可点击
+                    this.disabled = false; //this的值原本应为window,但是bind将该函数的this值重新指向为button
+                }.bind(this), 2000);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <button>点击</button>
+</body>
+
+</html>

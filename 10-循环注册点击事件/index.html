@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //点击输出当前索引
+        window.addEventListener("load", function() {
+            var lis = document.querySelectorAll("li");
+            // for (var i = 0; i < lis.length; i++) {
+            //     lis[i].index = i;
+            //     lis[i].onclick = function() {
+            //         console.log(this.index);
+
+            //     }
+            // }
+            for (var i = 0; i < lis.length; i++) { //每循环一次自动调用函数传入当前的i值
+                (function(index) {
+                    lis[index].onclick = function() {
+                        console.log(index);
+
+                    }
+                })(i);
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li>12</li>
+        <li>12</li>
+        <li>12</li>
+        <li>12</li>
+        <li>12</li>
+        <li>12</li>
+    </ul>
+</body>
+
+</html>

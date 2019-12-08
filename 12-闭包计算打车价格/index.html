@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var obj = (function money() {//自动调用函数直接调用,返回一个对象,该对象调用其内部的函数并传入参数
+            var total = 0;
+            var step = 13;
+            return {
+                price: function(distance) {
+                    if (distance <= 3) {
+                        total = step;
+                    } else {
+                        total = step + (distance - 3) * 5;
+                    }
+                    return total;
+                },
+
+                yd: function(flag) {
+                    return flag == true ? total + 10 : total;
+
+                }
+            }
+        })();
+        console.log(obj.price(1));
+        console.log(obj.yd(true));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

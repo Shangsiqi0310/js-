@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>foreach</title>
+    <script>
+        window.addEventListener("load", function() {
+            var data = [{
+                name: "小米",
+                price: 3999
+            }, {
+                name: "oppo",
+                price: 999
+            }, {
+                name: "华为",
+                price: 10000
+            }, {
+                name: "荣耀",
+                price: 666
+            }];
+            var tbody = document.querySelector("tbody");
+
+            product(data);
+
+            function product(pro) {
+                tbody.innerHTML = "";
+                console.log(tbody.innerHTML);
+
+                pro.forEach(function(value, index, pro) {
+                    index++
+                    var tr = '<tr>' +
+                        '<td>' + index + '</td>' +
+                        '<td>' + value.name + '</td>' +
+                        '<td> ' + value.price + '</td> </tr>'
+                    tbody.insertAdjacentHTML("beforeend", tr);
+
+                });
+                console.log(tbody.innerHTML);
+            }
+
+            var search = document.querySelector(".search");
+            var name_search = document.querySelector(".name-search");
+            search.addEventListener("click", function() {
+                var bottom = document.querySelector(".bottom").value;
+                var top = document.querySelector(".top").value;
+                var newPro = data.filter(function(value, index, data) {
+                    return value.price >= bottom && value.price <= top;
+                });
+                product(newPro);
+            });
+            var arr = [];
+            name_search.addEventListener("click", function() {
+                var p_name = document.querySelector(".p-name").value;
+                data.some(function(value, index, data) { //some返回值为true或false
+                    if (value.name == p_name) {
+                        arr.push(value);
+                        return true;
+                    }
+                });
+                product(arr);
+                arr = [];
+            })
+
+        })
+    </script>
+    <style>
+        /* 只有当表格边框独立（即 <' border-collapse '>属性等于separate时）border-spacing  empty-cells:hide/show才起作用*/
+        
+        input[type="text"] {
+            width: 40px;
+        }
+        
+        .box {
+            width: 800px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        
+        table {
+            margin: 10px auto;
+            border: 1px solid #eee;
+            padding: 0;
+            border-collapse: collapse;
+        }
+        
+        td {
+            width: 100px;
+            display: inline-block;
+            border-left: 1px solid #eee;
+            padding: 0;
+        }
+        
+        td:nth-child(1) {
+            border-left: 0;
+        }
+        
+        tr {
+            border-bottom: 1px solid #eee;
+            margin: 0;
+        }
+        
+        tbody tr:last-child {
+            border-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        按价格查询:<input type="text" class="bottom" />-<input type="text" class="top" />
+        <button class="search">搜索</button > 按照商品名称查询:
+        <input type="text" class="p-name"/> <button  class="name-search">查询</button>
+        <table>
+            <thead>
+                <tr>
+                    <td>id</td>
+                    <td>产品名称</td>
+                    <td>价格</td>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td>1</td>
+                    <td>小米</td>
+                    <td>3999</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>华为</td>
+                    <td>2000</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>苹果</td>
+                    <td>4000</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>荣耀</td>
+                    <td>3400</td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

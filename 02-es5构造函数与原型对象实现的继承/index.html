@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function Father(name, age) {
+            this.name = name;
+            this.age = age;
+
+        }
+        Father.prototype.money = function() {
+            console.log("10000");
+
+        }
+        var father = new Father("马爸爸", 18);
+        father.money();
+
+        function Son(name, age) {
+            Father.call(this, name, age);
+        }
+        //call方法可以实现马上调用函数,也可设置该函数的this代表的对象,调用父亲的构造函数并利用call方法将方法中的this代表的父亲对象,转换为儿子
+        var son = new Son("儿子", 6);
+        Son.prototype = father; //属性继承过来之后,方法的继承要利用原型链,
+        //Son.prototype=Father.prototype; 不可以:这样父亲的原型对象与儿子的原型对象为同一地址,此时如果修改儿子的原型对象父亲也会受到影响
+        //最好的方法就是把父亲的实例对象赋值给儿子的原型对象这样当儿子调用父亲中的方法时,可通过父亲的实例对象找到父亲原型对象中的方法
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

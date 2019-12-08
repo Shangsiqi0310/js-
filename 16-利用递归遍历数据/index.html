@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //用递归找到相应的对象,数组元素为对象,每个对象中有的属性值为数组(其元素为对象)
+        var data = [{
+            id: 1,
+            name: "家电",
+            content: [{
+                id: 11,
+                name: "洗衣机"
+            }, {
+                id: 12,
+                name: "彩电"
+            }, {
+                id: 2,
+                name: "服装",
+                content: [{
+                    id: 21,
+                    name: "衬衫"
+                }, {
+                    id: 22,
+                    name: "长裤"
+                }]
+            }]
+        }]
+
+        function getGood(data, id) { //遍历数组,得到每个对象看遍历的当前对象是否符合条件如果不符合,就找当前对象的content属性,如果有就调用函数本身
+            var o = {};
+            data.forEach(function(value, index, data) {
+                if (value.id === id) {
+                    o = value;
+
+                } else if (value.content && value.content.length > 0) {
+                    o = getGood(value.content, id); //递归调用函数如果函数有返回值会返回给他
+                }
+            })
+            return o;
+        }
+        console.log(getGood(data, 22));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

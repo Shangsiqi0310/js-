@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var obj = {
+            id: 1,
+            pname: "小米"
+        }
+        var arr = Object.keys(obj); //返回属性名的数组
+        //类似于for...in
+        for (var k in obj) { //k为属性名,obj为对象,相当于先遍历对象的属性名,之后再把值表示出来,k为string获取属性值
+            //两种方式 对象.属性名/对象[属性名(字符出类型)]
+            console.log(typeof k);
+
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

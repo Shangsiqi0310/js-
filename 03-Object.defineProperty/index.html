@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var obj = {
+                id = 1,
+                name = "小米",
+                price: 1999
+            }
+            //Object.defineProperty(obj,prop,{})
+            //value:对应prop属性的值
+            //writable:false (默认)值是否可以重写
+            //enumerable:false(默认)属性是否可以枚举
+            //configurable:false(默认)属性是否可被删除是否可以再次修改特性
+        Object.defineProperty(obj, "num", {
+            value: 123, //修改值,添加属性和值
+        });
+        Object.defineProperty(obj, "id", {
+            writable: false //不(可以)修改属性值
+        });
+        Object.defineProperty(obj, 'address', {
+            value: "lalala",
+            enumerable: false //不允许遍历
+        });
+
+        Object.defineProperty(obj, "price", {
+            configurable: flase //不允许删除该属性 不能修改该属性的特性
+        })
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

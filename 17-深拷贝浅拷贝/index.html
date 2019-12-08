@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //拷贝对象时,浅拷贝:把对象里的复杂类型数据的地址拷贝过来
+        //深拷贝:把对象中的复杂数据类型为新对象开辟一块新空间,把内容拷贝过来
+        //es6新增语法糖,浅拷贝:Object.assign(newObj,obj);
+        var object = {
+            id: 1,
+            name: "小花",
+            obj: {
+                id: 2,
+                name: "小草"
+            }
+        };
+        var newObj = {};
+
+        function copyObj(newObj, object) {
+            for (var k in object) {
+                if (object[k] instanceof Array) {
+                    newObj[k]=[];
+                    copyObj(newObj[k], object[k])
+                } else if (object[k] instanceof Object) {
+                    copyObj(newObj[k], object[k])
+                } else {
+                    newObj[k]={};
+                    newObj[k] = object[k];
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
